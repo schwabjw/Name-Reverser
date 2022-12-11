@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob's Apps</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob's Apps</title>
+</head>
+<body>
+    <h1>Name Reverser</h1>
+    <ul class="rappers">
+    <% for(let i=0; i < info.length; i++) {%>
+        <li class="rapper">
+            <div class="border">
+            <span><%= info[i].stageName %></span>
+            <!-- Used the below variables to reverse the name from the input-->
+            <% let reversedName = info[i].stageName.split('').reverse().join('') %>
+            <!-- Then once the names are reversed, the capital letter is switched from the now end of the name, to the beginning-->
+            <% let finalName = reversedName.split(' ').join(' ').toLowerCase() %>
+            <!-- this is done by first making all letters lowercase, then with the help of regex, capitalizing the first letter of each name-->
+            <span><%= finalName.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase()) %></span>
+            <span><%= info[i].likes %></span>
+            <span class='fa fa-thumbs-up'></span>
+            <span class='fa fa-trash'></span>
+            </div>
+        </li>
+    <% } %>
+    </ul>
+
+    <h2>Reverse a name:</h2>
+
+    <form action="/addRapper" method="POST">
+        <input type="text" placeholder="Normal Name" name="stageName">
+      <!-- <input type="text" placeholder="Birth Name" name="birthName"> --> 
+        <input type="submit">
+    </form>
+    
+
+
+    <script src='js/main.js'></script>
+</body>
+</html>
